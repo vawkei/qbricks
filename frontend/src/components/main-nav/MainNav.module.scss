@@ -1,0 +1,33 @@
+.heading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 10%;
+  background-color: #eeeef3;
+
+  h1 {
+    a {
+      text-decoration: none;
+      color: #909ba7;
+    }
+    span {
+      // color: blue;
+      color: #3174b4;
+    }
+  }
+
+  nav ul {
+    display: flex;
+    padding: 0rem;
+    margin: 0rem;
+    list-style: none;
+    gap: 1rem;
+    a {
+      text-decoration: none;
+    }
+  }
+  .active {
+    border-bottom: blue solid 1px;
+  }
+}

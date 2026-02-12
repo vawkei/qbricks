@@ -1,0 +1,97 @@
+.about-container {
+  width: 100%;
+  background-color: #f3f2f6;
+
+  h2 {
+    span {
+      // color: blue;
+      color: #3174b4;
+    }
+    text-align: center;
+    color: #092346;
+  }
+  .lead {
+    padding: 1rem;
+    p {
+      text-align: center;
+      //   color: #a5aab5;
+      color: #6a7688;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    // align-items: center;
+    // justify-content: center;
+
+    .problem-section {
+      padding: 1rem;
+      .heading {
+        h2 {
+          font-size: 1rem;
+          text-align: start;
+          padding: 1rem 0rem;
+          color: #223049;
+        }
+      }
+
+      ul {
+        margin-left: 1rem;
+        padding: 0rem;
+
+        li {
+          color: #6a7688;
+        }
+      }
+    }
+
+    .different-section {
+      background-color: #e1e7f1;
+      padding: 1rem;
+      .heading {
+        h2 {
+          color: #223049;
+          font-size: 1rem;
+          text-align: start;
+          padding: 1rem 0rem;
+        }
+      }
+      ul {
+        margin-left: 1rem;
+        padding: 0rem;
+
+        li {
+          color: #6a7688;
+        }
+      }
+    }
+
+    .offering-section {
+      padding: 1rem;
+      .heading {
+        h2 {
+          color: #223049;
+          font-size: 1rem;
+          text-align: start;
+          padding: 1rem 0rem;
+        }
+      }
+
+      ul {
+        margin-left: 1rem;
+        padding: 0rem;
+
+        li {
+          color: #6a7688;
+        }
+      }
+
+      .lower-part {
+        padding: 1rem 0rem;
+        color: #6a7688;
+      }
+    }
+  }
+}

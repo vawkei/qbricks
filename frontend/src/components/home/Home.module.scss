@@ -1,0 +1,21 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 50vh;
+
+  // span{
+  //     color: blue;
+  // }
+  h1 {
+    color: #909ba7;
+    span {
+      color: #3174b4;
+    }
+  }
+  p {
+    color: #758596;
+  }
+}
