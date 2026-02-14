@@ -1,0 +1,53 @@
+.auth-form-container {
+  width: 100%;
+  max-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0rem auto;
+  padding: 1rem;
+
+  .cardClass {
+    width: 100%;
+    padding: 1rem;
+    h2 {
+      //   text-align: center;
+      font-weight: 1rem;
+      padding: 0.5rem 0rem;
+      color: #223049;
+    }
+
+    .control {
+      margin-bottom: 0.5rem;
+
+      input {
+        padding: 0.25rem;
+        border-radius: 6px;
+        border: none;
+        width: 100%;
+        background-color: #faf9f9;
+      }
+    }
+
+    .action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem;
+      .btn {
+        width: 100%;
+        cursor: pointer;
+        &:hover{
+            background-color: white;
+            color: grey;
+        }
+      }
+      .switch{
+        padding: 0.5rem;
+        cursor: pointer;
+        &:hover{
+            color: grey;
+        }
+      }
+    }
+  }
+}

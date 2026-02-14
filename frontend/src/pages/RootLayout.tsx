@@ -9,7 +9,7 @@ const RootLayout = () => {
         style={{
           width: "100%",
           maxWidth: "50rem",
-          margin: "2rem auto",
+          margin: "5rem auto",
         }}
       >
         <Outlet />
