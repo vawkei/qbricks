@@ -32,7 +32,7 @@ app.get("/", (_req, res) => {
   res.send("<h1>This is QBricks server...</h1>");
 });
 
-app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/auth",authRoute);
 
 app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);
@@ -62,6 +62,7 @@ const start = async () => {
   try {
     await mongoose.connect(URL);
     app.listen(PORT, "localhost", () => {
+      console.log("connected to mongoDB compass...")
       console.log(`server listening on ${PORT}`);
     });
   } catch (error) {
