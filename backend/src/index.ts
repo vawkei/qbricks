@@ -28,26 +28,47 @@ app.use(cookieParser());
 app.use(express.json());
 
 // route:
-app.get("/",(_req,res)=>{
-    
-    res.send("<h1>This is QBricks server...</h1>")
+app.get("/", (_req, res) => {
+  res.send("<h1>This is QBricks server...</h1>");
 });
 
-app.use("/api/v1/auth",authRoute)
-
+app.use("/api/v1/auth", authRoute);
 
 app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);
 
-
-const PORT = Number(process.env.PORT) || 5000; 
+const PORT = Number(process.env.PORT) || 5000;
 
 // startup server without database:
-const start = ()=>{
-    app.listen(PORT,"localhost",()=>{
-        console.log(`server listening on ${PORT}`)
-    })
+// const start = () => {
+//   try {
+//     app.listen(PORT, "localhost", () => {
+//       console.log(`server listening on ${PORT}`);
+//     });
+//   } catch (error) {
+//     const message =
+//       error instanceof Error ? error.message : "something went wrong";
+//     console.log("startupError:", message);
+//   }
+// };
+
+// start();
+
+// const URL = "mongodb://localhost:27017/QBRICKS";
+const URL:any = process.env.MONGODB_URI
+
+// startup server with a database:
+const start = async () => {
+  try {
+    await mongoose.connect(URL);
+    app.listen(PORT, "localhost", () => {
+      console.log(`server listening on ${PORT}`);
+    });
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "something went wrong";
+    console.log("startupError:", message);
+  }
 };
 
 start();
-
