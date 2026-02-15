@@ -3,20 +3,29 @@ import Button from "../ui/button/Button";
 import Card from "../ui/card/Card";
 import classes from "./Auth.module.scss";
 import React, { useState } from "react";
+import { useRegister } from "../../features/auth/useRegister";
+import { useLogin } from "../../features/useLogin";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
-  const [enteredName, setEnteredName] = useState("");
+  const [enteredFirstName, setEnteredFirstName] = useState("");
+  const [enteredLastName, setEnteredLastName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [haveAccount, setHaveAccount] = useState(false);
+
+  const { mutateAsync: registerUser, isPending: isRegistering } = useRegister();
+  const { mutateAsync: loginUser, isPending: isLoggingIn } = useLogin();
+
+  const navigate = useNavigate();
 
   const switchAuthModeHandler = () => {
     setHaveAccount((currState) => !currState);
   };
 
   //    const onSubmitHandler = async (event: React.FormEvent) => {
-  const onSubmitHandler = (event: React.ChangeEvent) => {
+  const onSubmitHandler = async (event: React.ChangeEvent) => {
     event.preventDefault();
 
     if (haveAccount) {
@@ -34,47 +43,89 @@ const Auth = () => {
       };
 
       console.log(userData);
+
+      await loginUser(userData, {
+        onSuccess: (data) => {
+          console.log("responseFromServer:", data);
+          if (data.msg === "user loggedIn successfully...") {
+            navigate("/onboarding");
+          }
+        },
+        onError: (error) => {
+          const message =
+            error instanceof Error ? error.message : "something went wrong";
+          console.log("loginError:", message);
+        },
+      });
     } else {
       //👇👇 =================Register=============================👇👇
-      if (enteredName.trim().length < 3) {
-        return console.log("name should be at least 3 characters long");
+      if (enteredFirstName.trim().length < 3) {
+        return console.log("first name should be at least 3 characters long");
+      }
+      if (enteredLastName.trim().length < 3) {
+        return console.log("last name should be at least 3 characters long");
       }
       if (enteredEmail.trim().length === 0) {
         return console.log("please enter valid email address");
       }
-        if(!enteredEmail.includes("@")){
-            return console.log("please enter valid email address")
-        }
+      if (!enteredEmail.includes("@")) {
+        return console.log("please enter valid email address");
+      }
       if (enteredPassword.trim().length < 6) {
         return console.log("password must be at least 6 characters long");
       }
 
       const userData: UserProps = {
-        name: enteredName,
+        first_name: enteredFirstName,
+        last_name: enteredLastName,
         email: enteredEmail,
         password: enteredPassword,
         confirmedPassword: confirmedPassword,
       };
-      console.log(userData)
+      console.log(userData);
+      await registerUser(userData, {
+        onSuccess: (data) => {
+          console.log("responseFromServer:", data);
+          if (data.msg === "new user registered successfully") {
+            setHaveAccount(true);
+          }
+        },
+        onError: (error) => {
+          const message =
+            error instanceof Error ? error.message : "something went wrong";
+          console.log("registerError:", message);
+        },
+      });
     }
   };
 
   return (
     <div className={classes["auth-form-container"]}>
       <Card className={classes.cardClass}>
+        {isRegistering || isLoggingIn && <p>Please wait...</p>}
         <h2>{haveAccount ? "Login" : "Register"}</h2>
         <form action="" onSubmit={onSubmitHandler}>
           {haveAccount ? (
             ""
           ) : (
-            <div className={classes.control}>
-              <input
-                type="text"
-                value={enteredName}
-                onChange={(e) => setEnteredName(e.target.value)}
-                placeholder="Name"
-              />
-            </div>
+            <>
+              <div className={classes.control}>
+                <input
+                  type="text"
+                  value={enteredFirstName}
+                  onChange={(e) => setEnteredFirstName(e.target.value)}
+                  placeholder="First Name"
+                />
+              </div>
+              <div className={classes.control}>
+                <input
+                  type="text"
+                  value={enteredLastName}
+                  onChange={(e) => setEnteredLastName(e.target.value)}
+                  placeholder="Last Name"
+                />
+              </div>
+            </>
           )}
           <div className={classes.control}>
             <input

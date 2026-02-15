@@ -11,7 +11,7 @@ export const register = async (userData: UserProps) => {
       credentials: "include",
     });
 
-    const data = response.json();
+    const data =await response.json();
     console.log("data:", data);
 
     if (!response.ok) {
@@ -36,7 +36,7 @@ export const login = async (userData: UserProps) => {
       credentials: "include",
     });
 
-    const data = response.json();
+    const data =await response.json();
     console.log("data:", data);
 
     if (!response.ok) {
@@ -55,7 +55,7 @@ export const login = async (userData: UserProps) => {
 export const logout = async () => {
   try {
     const response = await fetch(`${BACKEND_URL}/logout`);
-    const data = response.json();
+    const data = await response.json();
     console.log("data:", data);
 
     if (!response.ok) {

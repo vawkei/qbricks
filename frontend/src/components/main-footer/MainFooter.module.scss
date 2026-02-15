@@ -1,0 +1,17 @@
+.main-footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #909ba7;
+  }
+  small {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #909ba7;
+    span {
+      color: #3174b4;
+    }
+  }
+}
