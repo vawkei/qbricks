@@ -4,8 +4,11 @@ import Card from "../ui/card/Card";
 import classes from "./Auth.module.scss";
 import React, { useState } from "react";
 import { useRegister } from "../../features/auth/useRegister";
-import { useLogin } from "../../features/useLogin";
+import { useLogin } from "../../features/auth/useLogin";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { SET_LOGGEDIN_USER } from "../../store/authStore/authIndex";
+import type { AddDispatch } from "../../store/store";
 
 const Auth = () => {
   const [enteredFirstName, setEnteredFirstName] = useState("");
@@ -19,6 +22,7 @@ const Auth = () => {
   const { mutateAsync: loginUser, isPending: isLoggingIn } = useLogin();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch<AddDispatch>();
 
   const switchAuthModeHandler = () => {
     setHaveAccount((currState) => !currState);
@@ -48,6 +52,7 @@ const Auth = () => {
         onSuccess: (data) => {
           console.log("responseFromServer:", data);
           if (data.msg === "user loggedIn successfully...") {
+            dispatch(SET_LOGGEDIN_USER(data))
             navigate("/onboarding");
           }
         },
@@ -102,7 +107,7 @@ const Auth = () => {
   return (
     <div className={classes["auth-form-container"]}>
       <Card className={classes.cardClass}>
-        {isRegistering || isLoggingIn && <p>Please wait...</p>}
+        {isRegistering || (isLoggingIn && <p>Please wait...</p>)}
         <h2>{haveAccount ? "Login" : "Register"}</h2>
         <form action="" onSubmit={onSubmitHandler}>
           {haveAccount ? (
@@ -144,12 +149,16 @@ const Auth = () => {
             />
           </div>
           <div className={classes.control}>
-            <input
-              type="password"
-              value={confirmedPassword}
-              onChange={(e) => setConfirmedPassword(e.target.value)}
-              placeholder="Confirm Password"
-            />
+            {haveAccount ? (
+              ""
+            ) : (
+              <input
+                type="password"
+                value={confirmedPassword}
+                onChange={(e) => setConfirmedPassword(e.target.value)}
+                placeholder="Confirm Password"
+              />
+            )}
           </div>
           <div className={classes.action}>
             <Button type="submit" className={classes.btn}>

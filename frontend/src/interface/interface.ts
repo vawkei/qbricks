@@ -4,4 +4,11 @@ export interface UserProps{
     email:string;
     password:string;
     confirmedPassword?:string
-}
+};
+
+export interface AuthState{
+    isLoggedIn: boolean;
+    isSuccess:boolean;
+    message:string;
+    user:null
+};
