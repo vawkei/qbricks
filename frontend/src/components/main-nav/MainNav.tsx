@@ -3,6 +3,7 @@ import Card from "../ui/card/Card";
 import { NavLink } from "react-router-dom";
 import { ShowWhenLoggedIn, ShowWhenLoggedOut } from "../auth/Protected";
 import { useLogout } from "../../features/auth/useLogout";
+import { googleLogout } from "@react-oauth/google";
 
 const MainNav = () => {
 
@@ -14,6 +15,7 @@ const MainNav = () => {
 
   const logoutHandler =async ()=>{
     await logoutUser();
+    //  googleLogout()  // clears Google SDK session
   }
 
   return (

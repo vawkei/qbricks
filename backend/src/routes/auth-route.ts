@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  googleLoginController,
   loginController,
   logoutController,
   registerController,
@@ -9,8 +10,7 @@ const authRouter = Router();
 
 authRouter.post("/register", registerController);
 authRouter.post("/login", loginController);
+authRouter.post("/google", googleLoginController);
 authRouter.get("/logout", logoutController);
 
 export default authRouter;
-
-

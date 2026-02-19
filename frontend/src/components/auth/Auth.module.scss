@@ -28,6 +28,28 @@
       }
     }
 
+    .google {
+      width: 100%;
+      padding: 0.5rem;
+      p {
+        text-align: center;
+        padding-bottom: 0.5rem;
+        color: #758596;
+      }
+      .btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        // gap: 0.5rem;
+        justify-content: space-around;
+        cursor: pointer;
+        &:hover {
+          background-color: white;
+          color: grey;
+        }
+      }
+    }
+
     .action {
       display: flex;
       flex-direction: column;
@@ -36,16 +58,16 @@
       .btn {
         width: 100%;
         cursor: pointer;
-        &:hover{
-            background-color: white;
-            color: grey;
+        &:hover {
+          background-color: white;
+          color: grey;
         }
       }
-      .switch{
+      .switch {
         padding: 0.5rem;
         cursor: pointer;
-        &:hover{
-            color: grey;
+        &:hover {
+          color: grey;
         }
       }
     }
