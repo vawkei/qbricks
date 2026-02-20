@@ -1,0 +1,56 @@
+.onboarding-container {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 1rem;
+  // background-color: #f3f2f6;
+
+  h2 {
+    text-align: center;
+    // color: #758596;
+    color: #223049;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    position: relative;
+
+    .cardClass {
+      width: 50%;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      // justify-content: center;
+      .circle{
+        position: absolute;
+        top: 3.6rem;
+        left: 24.5rem;
+        background-color: greenyellow;
+        color: white;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        h3{
+         color: #758596; 
+        }
+        p{
+          color: #758596;
+        }
+      }
+    }
+  }
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .btn{
+      cursor: pointer;
+    }
+  }
+}

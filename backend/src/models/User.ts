@@ -51,10 +51,12 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    // registeredWithGoogle:{
-    //     enum:["yes","no","null"],
-    //     default:"null"
-    // }
+    isOnboarded:{
+      type:Boolean,
+      // enum:[true,false],
+      default:false
+    }
+  
   },
   { timestamps: true },
 );

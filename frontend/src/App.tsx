@@ -8,6 +8,7 @@ import HowItWorksPage from "./pages/HowItWorksPage";
 import AuthPage from "./pages/AuthPage";
 import OnBoardingPage from "./pages/OnBoardingPage";
 import { ProtectedRoute } from "./components/auth/Protected";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,13 +21,29 @@ function App() {
         { path: "/about", element: <AboutPage /> },
         { path: "/how-it-works", element: <HowItWorksPage /> },
         { path: "/auth", element: <AuthPage /> },
+        // {
+        //   path: "/onboarding",
+        //   element: (
+        //     <ProtectedRoute>
+        //       <OnBoardingPage />
+        //     </ProtectedRoute>
+        //   ),
+        // },
         {
-          path: "/onboarding",
+          path: "/dashboard",
           element: (
             <ProtectedRoute>
-              <OnBoardingPage />
+              <DashboardPage />
             </ProtectedRoute>
           ),
+        },
+      ],
+    },
+    {
+      children: [
+        {
+          path: "/onboarding",
+          element: <OnBoardingPage />,
         },
       ],
     },

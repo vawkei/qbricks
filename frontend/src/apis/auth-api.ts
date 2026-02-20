@@ -1,4 +1,7 @@
-import type { CredentialResponseCredentialProps, UserProps } from "../interface/interface";
+import type {
+  CredentialResponseCredentialProps,
+  UserProps,
+} from "../interface/interface";
 
 const BACKEND_URL = "http://localhost:5000/api/v1/auth";
 
@@ -53,7 +56,9 @@ export const login = async (userData: UserProps) => {
 };
 
 // export const googleLogin = async (decoded: CredentialDataProps) => {
-export const googleLogin = async (credential: CredentialResponseCredentialProps) => {
+export const googleLogin = async (
+  credential: CredentialResponseCredentialProps,
+) => {
   // console.log("credential:",credential)
 
   try {
@@ -75,6 +80,26 @@ export const googleLogin = async (credential: CredentialResponseCredentialProps)
     const message =
       error instanceof Error ? error.message : "something went wrong";
     console.log("googleLoginError:", message);
+  }
+};
+
+export const onboarding = async () => {
+  try {
+    const response = await fetch(`${BACKEND_URL}/onboarding`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include"
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.msg || "request failed");
+    }
+    console.log("data:", data);
+    return data;
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "something went wrong";
+    console.log("logoutError:", message);
   }
 };
 

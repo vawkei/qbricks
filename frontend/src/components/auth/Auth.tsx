@@ -58,7 +58,12 @@ const Auth = () => {
           console.log("responseFromServer:", data);
           if (data.msg === "user loggedIn successfully...") {
             dispatch(SET_LOGGEDIN_USER(data));
-            navigate("/onboarding");
+
+            if (!data.isOnboarded) {
+              navigate("/onboarding");
+            }else{
+              navigate("/dashboard")
+            }
           }
         },
         onError: (error) => {

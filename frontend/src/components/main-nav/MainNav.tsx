@@ -9,8 +9,7 @@ import type { AddDispatch } from "../../store/store";
 import { RESET_USER } from "../../store/authStore/authIndex";
 
 const MainNav = () => {
-
-  const {mutateAsync:logoutUser} = useLogout()
+  const { mutateAsync: logoutUser } = useLogout();
 
   const dispatch = useDispatch<AddDispatch>();
 
@@ -18,11 +17,11 @@ const MainNav = () => {
     return navData.isActive ? classes.active : "";
   };
 
-  const logoutHandler =async ()=>{
+  const logoutHandler = async () => {
     await logoutUser();
-    dispatch(RESET_USER())
-     googleLogout()  // clears Google SDK session
-  }
+    dispatch(RESET_USER());
+    googleLogout(); // clears Google SDK session
+  };
 
   return (
     <Card className={classes.heading}>
@@ -35,25 +34,38 @@ const MainNav = () => {
       </div>
       <nav>
         <ul>
-          <li>
-            <NavLink to={"/about"} className={navDataHandler}>
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={"/how-it-works"} className={navDataHandler}>
-              How it works
-            </NavLink>
-          </li>
           <ShowWhenLoggedOut>
+            <li>
+              <NavLink to={"/about"} className={navDataHandler}>
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/how-it-works"} className={navDataHandler}>
+                How it works
+              </NavLink>
+            </li>
             <li>
               <NavLink to={"/auth"} className={navDataHandler}>
                 Login
               </NavLink>
             </li>
           </ShowWhenLoggedOut>
+
           <ShowWhenLoggedIn>
-            <li onClick={()=>logoutHandler()} style={{cursor:"pointer"}}>Logout</li>
+            <li>
+              <NavLink to={"/onboarding"} className={navDataHandler}>
+                onboarding
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/dashboard"} className={navDataHandler}>
+                dashboard
+              </NavLink>
+            </li>
+            <li onClick={() => logoutHandler()} style={{ cursor: "pointer" }}>
+              Logout
+            </li>
           </ShowWhenLoggedIn>
         </ul>
       </nav>

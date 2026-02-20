@@ -7,6 +7,7 @@ import {
   CredentialDataProps,
   CredentialResponseCredentialProps,
 } from "../interface/interface";
+import { AuthenticatedRequest } from "../middlewares/authMiddleware";
 
 export const registerController = async (req: Request, res: Response) => {
   //   console.log("this is the register route...");
@@ -131,12 +132,47 @@ export const loginController = async (req: Request, res: Response) => {
       });
 
       console.log("user loggedIn successfully...");
-      res.status(200).json({ msg: "user loggedIn successfully..." });
+      res.status(200).json({
+        msg: "user loggedIn successfully...",
+        isOnboarded: user.isOnboarded,
+      });
     }
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "something went wrong";
     console.log("loginError:", message);
+  }
+};
+
+export const onboardingController = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
+  console.log("this is the onboarding route...");
+
+  const userId = req.user?.userId;
+  console.log("userId:", userId);
+
+  try {
+    const user = await User.findById(userId);
+    console.log("user:", user);
+
+    if (!user) {
+      return console.log("user not found");
+    }
+
+    user.isOnboarded = true;
+    await user?.save();
+
+    res.status(200).json({ msg: "user successfully onboarded" });
+  } catch (error) {
+    const message =
+      error instanceof Error
+        ? error.message
+        : "something went wrong";
+
+    console.log("onboardingError:", message);
+    res.status(500).json({ msg: message });
   }
 };
 
