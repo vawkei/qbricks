@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { SET_LOGGEDIN_USER } from "../../store/authStore/authIndex";
 import type { AddDispatch } from "../../store/store";
 // import { FcGoogle } from "react-icons/fc";
-import { GoogleLogin,  } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useGoogleLogin } from "../../features/auth/useGoogleLogin";
 
@@ -24,7 +24,7 @@ const Auth = () => {
 
   const { mutateAsync: registerUser, isPending: isRegistering } = useRegister();
   const { mutateAsync: loginUser, isPending: isLoggingIn } = useLogin();
-  const {mutateAsync:googleLoginUser} = useGoogleLogin();
+  const { mutateAsync: googleLoginUser } = useGoogleLogin();
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AddDispatch>();
@@ -176,7 +176,7 @@ const Auth = () => {
               {/* <Button type="submit" className={classes.btn} >
                 Continue with Google <FcGoogle />
               </Button> */}
-              <GoogleLogin 
+              <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   console.log("credentialResponse:", credentialResponse);
                   if (credentialResponse.credential) {
@@ -185,7 +185,24 @@ const Auth = () => {
                     );
                     console.log("credentialResponse2:", decoded);
                     console.log("email:", decoded.email, "name:", decoded.name);
-                    googleLoginUser({credential:credentialResponse.credential})
+                    googleLoginUser(
+                      { credential: credentialResponse.credential },
+                      {
+                        onSuccess: (data) => {
+                          if (data.msg === "user loggedIn successfully...") {
+                            dispatch(SET_LOGGEDIN_USER(data));
+                            navigate("/onboarding");
+                          }
+                        },
+                        onError: (error) => {
+                          const message =
+                            error instanceof Error
+                              ? error.message
+                              : "something went wrong";
+                          console.log("googleLoginError:", message);
+                        },
+                      },
+                    );
                   }
                 }}
                 onError={() => {
@@ -207,43 +224,3 @@ const Auth = () => {
 };
 
 export default Auth;
-
-// with this:
-// if (credentialResponse.credential) {
-//                     const decoded = jwtDecode<GoogleLoginProps>(credentialResponse.credential!);
-//                     console.log("credentialResponse2:", decoded);
-//                     console.log("email:",decoded)
-//                   }
-// and this:
-// export type credentialDataProps =  {
-//   credential: string;
-//   clientId: string;
-//   select_by: string;
-//     iss: string;
-//   azp: string;
-//   aud: string;
-//   sub: string;
-//   email: string;
-//   email_verified: boolean;
-//   name: string;
-//   picture: string;
-//   given_name: string;
-//   family_name: string;
-//   iat: number;
-//   exp: number;
-//   nbf: number;
-//   jti: string;
-//   [key: string]: any; // Allows extra properties so typescript wont give an error
-// }
-// i still cant see these: email
-
-// email_verified
-
-// given_name
-
-// family_name
-
-// picture
-
-// etc.
-// when i console.log("email:",decoded.)

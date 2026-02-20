@@ -1,4 +1,4 @@
-import type { CredentialDataProps, CredentialResponseCredentialProps, UserProps } from "../interface/interface";
+import type { CredentialResponseCredentialProps, UserProps } from "../interface/interface";
 
 const BACKEND_URL = "http://localhost:5000/api/v1/auth";
 

@@ -4,10 +4,15 @@ import { NavLink } from "react-router-dom";
 import { ShowWhenLoggedIn, ShowWhenLoggedOut } from "../auth/Protected";
 import { useLogout } from "../../features/auth/useLogout";
 import { googleLogout } from "@react-oauth/google";
+import { useDispatch } from "react-redux";
+import type { AddDispatch } from "../../store/store";
+import { RESET_USER } from "../../store/authStore/authIndex";
 
 const MainNav = () => {
 
   const {mutateAsync:logoutUser} = useLogout()
+
+  const dispatch = useDispatch<AddDispatch>();
 
   const navDataHandler = (navData: any) => {
     return navData.isActive ? classes.active : "";
@@ -15,7 +20,8 @@ const MainNav = () => {
 
   const logoutHandler =async ()=>{
     await logoutUser();
-    //  googleLogout()  // clears Google SDK session
+    dispatch(RESET_USER())
+     googleLogout()  // clears Google SDK session
   }
 
   return (
@@ -47,7 +53,7 @@ const MainNav = () => {
             </li>
           </ShowWhenLoggedOut>
           <ShowWhenLoggedIn>
-            <li onClick={()=>logoutHandler()}>Logout</li>
+            <li onClick={()=>logoutHandler()} style={{cursor:"pointer"}}>Logout</li>
           </ShowWhenLoggedIn>
         </ul>
       </nav>
