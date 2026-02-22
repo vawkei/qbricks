@@ -66,6 +66,7 @@ export const googleLogin = async (
       method: "POST",
       body: JSON.stringify(credential),
       headers: { "Content-Type": "application/json" },
+      credentials:"include"
     });
 
     const data = await response.json();

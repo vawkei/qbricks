@@ -54,11 +54,6 @@ const MainNav = () => {
 
           <ShowWhenLoggedIn>
             <li>
-              <NavLink to={"/onboarding"} className={navDataHandler}>
-                onboarding
-              </NavLink>
-            </li>
-            <li>
               <NavLink to={"/dashboard"} className={navDataHandler}>
                 dashboard
               </NavLink>

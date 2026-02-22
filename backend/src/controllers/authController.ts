@@ -164,12 +164,15 @@ export const onboardingController = async (
     user.isOnboarded = true;
     await user?.save();
 
-    res.status(200).json({ msg: "user successfully onboarded" });
+    res
+      .status(200)
+      .json({
+        msg: "user successfully onboarded",
+        isOnboarded: user.isOnboarded,
+      });
   } catch (error) {
     const message =
-      error instanceof Error
-        ? error.message
-        : "something went wrong";
+      error instanceof Error ? error.message : "something went wrong";
 
     console.log("onboardingError:", message);
     res.status(500).json({ msg: message });
@@ -181,16 +184,13 @@ export const googleLoginController = async (req: Request, res: Response) => {
 
   const client = new OAuth2Client(process.env.Google_ClientId);
 
-  // const { decoded }: CredentialDataProps  = req.body;
   const { credential }: CredentialResponseCredentialProps = req.body;
   if (!credential) {
     res.status(400).json({ msg: "bad request..." });
     return console.log("no google credential sent from frontend");
   }
-  console.log("decoded:", credential);
 
   const ticket = await client.verifyIdToken({
-    // idToken: decoded.credential,
     idToken: credential,
     audience: process.env.Google_ClientId,
   });
@@ -226,10 +226,19 @@ export const googleLoginController = async (req: Request, res: Response) => {
     });
 
     console.log("user loggedIn successfully...");
-    res.status(200).json({ msg: "user loggedIn successfully..." });
+    res.status(200).json({
+      msg: "user loggedIn successfully...",
+      isNewUser: false,
+      isOnboarded: userExists.isOnboarded,
+      user: {
+        id: userExists._id,
+        first_name: userExists.first_name,
+        email: userExists.email,
+      },
+    });
   } else {
     //👇👇================== CREATE NEW USER========================== 👇👇
-
+    console.log("creating a new user...");
     try {
       const newUser = await User.create({
         first_name: given_name,
@@ -251,10 +260,21 @@ export const googleLoginController = async (req: Request, res: Response) => {
           httpOnly: true,
           expires: new Date(Date.now() + oneDay),
           path: "/",
+          // sameSite: "lax",
+          // secure: false,
         });
 
         console.log("new user registered successfully");
-        res.status(200).json({ msg: "new user registered successfully" });
+        res.status(200).json({
+          msg: "new user registered successfully",
+          isOnboarded: newUser.isOnboarded,
+          isNewUser: true,
+          user: {
+            id: newUser._id,
+            first_name: newUser.first_name,
+            email: newUser.email,
+          },
+        });
       }
     } catch (error) {
       const message =

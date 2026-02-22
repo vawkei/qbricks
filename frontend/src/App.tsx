@@ -39,13 +39,14 @@ function App() {
         },
       ],
     },
+
     {
-      children: [
-        {
-          path: "/onboarding",
-          element: <OnBoardingPage />,
-        },
-      ],
+      path: "/onboarding",
+      element: (
+        <ProtectedRoute>
+          <OnBoardingPage />
+        </ProtectedRoute>
+      ),
     },
   ]);
 

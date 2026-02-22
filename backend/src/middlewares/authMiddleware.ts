@@ -12,11 +12,12 @@ const authenticationMiddleware = (
 ) => {
   console.log("cheking req.cookies...");
   const token = req.cookies.token;
+  console.log("token:",token);
 
   if (!token) {
     console.log("You are not authorized to access this route. ");
     return res
-      .status(404)
+      .status(401)
       .json({ msg: "You are not authorized to access this route." });
   }
 

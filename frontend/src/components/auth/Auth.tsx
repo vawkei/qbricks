@@ -61,8 +61,8 @@ const Auth = () => {
 
             if (!data.isOnboarded) {
               navigate("/onboarding");
-            }else{
-              navigate("/dashboard")
+            } else {
+              navigate("/dashboard");
             }
           }
         },
@@ -193,12 +193,32 @@ const Auth = () => {
                     googleLoginUser(
                       { credential: credentialResponse.credential },
                       {
+                        // 👇👇this works o!👇👇
+                        // onSuccess: (data) => {
+                        //   dispatch(SET_LOGGEDIN_USER(data));
+                        //   if (data.msg === "user loggedIn successfully...") {
+                        //     navigate("/dashboard");
+                        //   }
+                        //   if (data.msg === "new user registered successfully") {
+                        //     if (!data.isOnboarded) {
+                        //       navigate("/onboarding");
+                        //     } else {
+                        //       navigate("/dashboard");
+                        //     }
+                        //   }
+                        // },
+
+                        //👇👇 a much cleaner approach:👇👇
+
                         onSuccess: (data) => {
-                          if (data.msg === "user loggedIn successfully...") {
-                            dispatch(SET_LOGGEDIN_USER(data));
+                          dispatch(SET_LOGGEDIN_USER(data));
+                          if (!data.isOnboarded) {
                             navigate("/onboarding");
+                          } else {
+                            navigate("/dashboard");
                           }
                         },
+
                         onError: (error) => {
                           const message =
                             error instanceof Error
