@@ -1,0 +1,35 @@
+.phaseTwo {
+  width: 45%;
+  background-color: #3174b4;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  h2 {
+    color: white;
+  }
+
+  .body {
+    padding: 1rem 0rem;
+    h2 {
+      color: white;
+      padding-bottom: 1rem;
+    }
+    p {
+      color: white;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+
+      .btn {
+        background-color: white;
+        color: black;
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  }
+}

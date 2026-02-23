@@ -7,9 +7,11 @@ import { googleLogout } from "@react-oauth/google";
 import { useDispatch } from "react-redux";
 import type { AddDispatch } from "../../store/store";
 import { RESET_USER } from "../../store/authStore/authIndex";
+import { useNavigate } from "react-router-dom";
 
 const MainNav = () => {
   const { mutateAsync: logoutUser } = useLogout();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch<AddDispatch>();
 
@@ -21,16 +23,28 @@ const MainNav = () => {
     await logoutUser();
     dispatch(RESET_USER());
     googleLogout(); // clears Google SDK session
+    navigate("/auth");
   };
 
   return (
     <Card className={classes.heading}>
       <div>
-        <h1>
-          <NavLink to={"/"} className={navDataHandler}>
-            <span>Q</span>Bricks
-          </NavLink>
-        </h1>
+        {/*👇👇 show when logged out👇👇 */}
+        <ShowWhenLoggedOut>
+          <h1>
+            <NavLink to={"/"} className={navDataHandler}>
+              <span>Q</span>Bricks
+            </NavLink>
+          </h1>
+        </ShowWhenLoggedOut>
+        {/*👇👇 show when logged in👇👇 */}
+        <ShowWhenLoggedIn>
+          <h1>
+            <NavLink to={"/dashboard"} className={navDataHandler}>
+              <span>Q</span>Bricks
+            </NavLink>
+          </h1>
+        </ShowWhenLoggedIn>
       </div>
       <nav>
         <ul>
@@ -54,8 +68,13 @@ const MainNav = () => {
 
           <ShowWhenLoggedIn>
             <li>
-              <NavLink to={"/dashboard"} className={navDataHandler}>
-                dashboard
+              <NavLink to={"/progress"} className={navDataHandler}>
+                Progress
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/profile"} className={navDataHandler}>
+                profile
               </NavLink>
             </li>
             <li onClick={() => logoutHandler()} style={{ cursor: "pointer" }}>
