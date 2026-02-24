@@ -1,12 +1,12 @@
-import PhaseOne from "../phases/phase1/PhaseOne";
-import PhaseTwo from "../phases/phase2/PhaseTwo";
+import PhaseOneIndex from "../phases/phase1/PhaseOneIndex";
+import PhaseTwoIndex from "../phases/phase2/PhaseTwoIndex";
 import classes from "./Dashboard.module.scss";
 
 const Dashboard = () => {
     return ( 
         <div className={classes.dashboard}>
-            <PhaseOne />
-            <PhaseTwo />
+            <PhaseOneIndex />
+            <PhaseTwoIndex />
         </div>
      );
 }

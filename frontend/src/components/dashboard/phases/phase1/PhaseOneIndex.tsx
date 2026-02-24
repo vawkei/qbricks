@@ -1,7 +1,10 @@
 import Button from "../../../ui/button/Button";
-import classes from "./PhaseOne.module.scss";
+import classes from "./PhaseOneIndex.module.scss";
+import { useNavigate } from "react-router-dom";
 
-const PhaseOne = () => {
+const PhaseOneIndex = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={classes.phaseOne}>
       <h2>Phase One</h2>
@@ -10,7 +13,11 @@ const PhaseOne = () => {
         <p>Free test available</p>
 
         <div className={classes.actions}>
-          <Button className={classes.btn} type="type">
+          <Button
+            className={classes.btn}
+            type="type"
+            onClick={()=>navigate("/dashboard/phase-one/sub-selection")}
+          >
             Enter Phase 1
           </Button>
         </div>
@@ -19,4 +26,4 @@ const PhaseOne = () => {
   );
 };
 
-export default PhaseOne;
+export default PhaseOneIndex;

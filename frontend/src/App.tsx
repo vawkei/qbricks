@@ -9,6 +9,7 @@ import AuthPage from "./pages/AuthPage";
 import OnBoardingPage from "./pages/OnBoardingPage";
 import { ProtectedRoute } from "./components/auth/Protected";
 import DashboardPage from "./pages/DashboardPage";
+import PhaseOnePage from "./pages/PhaseOnePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -21,19 +22,19 @@ function App() {
         { path: "/about", element: <AboutPage /> },
         { path: "/how-it-works", element: <HowItWorksPage /> },
         { path: "/auth", element: <AuthPage /> },
-        // {
-        //   path: "/onboarding",
-        //   element: (
-        //     <ProtectedRoute>
-        //       <OnBoardingPage />
-        //     </ProtectedRoute>
-        //   ),
-        // },
         {
           path: "/dashboard",
           element: (
             <ProtectedRoute>
               <DashboardPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/dashboard/phase-one/sub-selection",
+          element: (
+            <ProtectedRoute>
+              <PhaseOnePage />
             </ProtectedRoute>
           ),
         },

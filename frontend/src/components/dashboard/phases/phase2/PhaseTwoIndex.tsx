@@ -1,7 +1,7 @@
 import Button from "../../../ui/button/Button";
-import classes from "./PhaseTwo.module.scss";
+import classes from "./PhaseTwoIndex.module.scss";
 
-const PhaseTwo = () => {
+const PhaseTwoIndex = () => {
   return (
     <div className={classes.phaseTwo}>
       <h2>Phase Two</h2>
@@ -18,4 +18,4 @@ const PhaseTwo = () => {
   );
 };
 
-export default PhaseTwo;
+export default PhaseTwoIndex;
