@@ -1,0 +1,33 @@
+.test-list-container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    h2{
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+
+    ul{
+        padding: 0rem;
+        margin: 0rem;
+        list-style: none;
+        width: 100%;
+
+        .cardClass{
+            padding: 1rem;
+            width: 100%;
+
+            li{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .btn{
+                    width: 5rem;
+                }
+            }
+        }
+    }
+}

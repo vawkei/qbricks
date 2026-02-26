@@ -31,7 +31,7 @@ export const DummySubjectSelection = [
     conditionColor: "#afb8c8",
   },
   {
-    id: "3",
+    id: "4",
     icon: MdLock,
     iconColor: "#8892a0",
     name: "Chemistry",

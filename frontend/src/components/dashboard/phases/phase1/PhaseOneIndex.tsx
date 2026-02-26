@@ -16,7 +16,7 @@ const PhaseOneIndex = () => {
           <Button
             className={classes.btn}
             type="type"
-            onClick={()=>navigate("/dashboard/phase-one/sub-selection")}
+            onClick={()=>navigate("/dashboard/phase-one")}
           >
             Enter Phase 1
           </Button>

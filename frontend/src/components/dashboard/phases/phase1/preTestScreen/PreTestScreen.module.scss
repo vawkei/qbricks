@@ -1,0 +1,33 @@
+.pre-test-screen-container{
+    width: 100%;
+    padding: 1rem;
+    h2{
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+
+    .cardClass{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0rem auto;
+        flex-direction: column;
+        padding: 1rem;
+        width: 100%;
+        max-width: 25rem;
+
+        p{
+            margin-bottom: 2rem;
+        }
+        .actions{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .mode{
+                padding: 0.5rem;
+                width: 10rem;
+            }
+        }
+    }
+}

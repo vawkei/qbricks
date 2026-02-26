@@ -13,11 +13,11 @@ export interface AuthState {
   user: null;
 }
 
-export interface CredentialResponseCredentialProps{
-  credential:string
+export interface CredentialResponseCredentialProps {
+  credential: string;
 }
 
-export interface CredentialDataProps  {
+export interface CredentialDataProps {
   credential?: string;
   clientId?: string;
   select_by?: string;
@@ -37,3 +37,17 @@ export interface CredentialDataProps  {
   jti: string;
   [key: string]: any; // Allows extra properties so typescript wont give an error
 }
+
+export interface TestProps {
+  id: number;
+  subject?: string;
+  title: string;
+  isLocked: boolean;
+}
+
+// export type TestProps = {
+//   id: number;
+//   subject?: string;
+//   title: string;
+//   isLocked: boolean;
+// };

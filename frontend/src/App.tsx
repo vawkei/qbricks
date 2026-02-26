@@ -10,6 +10,9 @@ import OnBoardingPage from "./pages/OnBoardingPage";
 import { ProtectedRoute } from "./components/auth/Protected";
 import DashboardPage from "./pages/DashboardPage";
 import PhaseOnePage from "./pages/PhaseOnePage";
+import TestListPage from "./pages/TestListPage";
+import PreTestScreenPage from "./pages/PreTestScreenPage";
+import StartPage from "./pages/StartPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,13 +34,30 @@ function App() {
           ),
         },
         {
-          path: "/dashboard/phase-one/sub-selection",
+          path: "/dashboard/phase-one",
           element: (
             <ProtectedRoute>
               <PhaseOnePage />
             </ProtectedRoute>
           ),
         },
+        {path:"/dashboard/phase-one/:id",element:(
+          <ProtectedRoute>
+            <TestListPage />
+          </ProtectedRoute>
+        )},
+        {
+          path:"/dashboard/phase-one/:id/:testId",element:(
+            <ProtectedRoute>
+              <PreTestScreenPage />
+            </ProtectedRoute>
+          )
+        },
+        {path:"/dashboard/phase-one/:id/:testId/start",element:(
+          <ProtectedRoute>
+            <StartPage />
+          </ProtectedRoute>
+        )}
       ],
     },
 
@@ -60,3 +80,13 @@ function App() {
 }
 
 export default App;
+
+
+// /dashboard/phase-one/:subject
+//     → Subject Test List (10 tests, demo + paid)
+
+// /dashboard/phase-one/:subject/:testId
+//     → Pre-Test Screen (Voice / Written)
+
+// /dashboard/phase-one/:subject/:testId/start
+//     → Actual Test Screen

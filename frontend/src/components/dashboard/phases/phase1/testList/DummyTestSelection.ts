@@ -1,0 +1,55 @@
+import type { TestProps } from "../../../../../interface/interface";
+
+export const DummyTestSelection: Record<string,TestProps[]> = {
+  "english-language": [
+    
+    { id: 0, subject: "English Language", title: "Test 1", isLocked: false },
+    { id: 1,  title: "Test 1", isLocked:true },
+    { id: 2,  title: "Test 2", isLocked: true },
+    { id: 3,  title: "Test 3", isLocked: true },
+    { id: 4,  title: "Test 4", isLocked: true },
+    { id: 5,  title: "Test 5", isLocked: true },
+    { id: 6,  title: "Test 6", isLocked: true },
+    { id: 7,  title: "Test 7", isLocked: true },
+    { id: 8,  title: "Test 8", isLocked: true },
+    { id: 9,  title: "Test 9", isLocked: true },
+    { id: 10,  title: "Test 10", isLocked: true },
+  ],
+  "mathematics": [
+    
+    { id: 1, subject: "Mathematics", title: "Test 1", isLocked: true },
+    { id: 2,  title: "Test 2", isLocked: true },
+    { id: 3,  title: "Test 3", isLocked: true },
+    { id: 4,  title: "Test 4", isLocked: true },
+    { id: 5,  title: "Test 5", isLocked: true },
+    { id: 6,  title: "Test 6", isLocked: true },
+    { id: 7,  title: "Test 7", isLocked: true },
+    { id: 8,  title: "Test 8", isLocked: true },
+    { id: 9,  title: "Test 9", isLocked: true },
+    { id: 10,  title: "Test 10", isLocked: true },
+  ],
+  "physics": [
+    { id: 1, subject: "Physics", title: "Test 1", isLocked: true },
+    { id: 2, title: "Test 2", isLocked: true },
+    { id: 3, title: "Test 3", isLocked: true },
+    { id: 4,  title: "Test 4", isLocked: true },
+    { id: 5,  title: "Test 5", isLocked: true },
+    { id: 6,  title: "Test 6", isLocked: true },
+    { id: 7,  title: "Test 7", isLocked: true },
+    { id: 8,  title: "Test 8", isLocked: true },
+    { id: 9,  title: "Test 9", isLocked: true },
+    { id: 10,  title: "Test 10", isLocked: true },
+  ],
+  "chemistry": [
+    { id: 1, subject: "Chemistry", title: "Test 1", isLocked: true },
+    { id: 2,  title: "Test 2", isLocked: true },
+    { id: 3,  title: "Test 3", isLocked: true },
+    { id: 4,  title: "Test 4", isLocked: true },
+    { id: 5,  title: "Test 5", isLocked: true },
+    { id: 6,  title: "Test 6", isLocked: true },
+    { id: 7,  title: "Test 7", isLocked: true },
+    { id: 8,  title: "Test 8", isLocked: true },
+    { id: 9,  title: "Test 9", isLocked: true },
+    { id: 10,  title: "Test 10", isLocked: true },
+  ],
+};

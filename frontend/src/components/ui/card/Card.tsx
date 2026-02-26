@@ -3,6 +3,7 @@ import classes from "./Card.module.scss";
 interface CardProps {
   className: string;
   children: React.ReactNode;
+  onClick?:()=>void
 }
 
 const Card = (props: CardProps) => {
