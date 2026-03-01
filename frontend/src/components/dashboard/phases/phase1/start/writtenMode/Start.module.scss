@@ -1,0 +1,77 @@
+// .start-container {
+//   max-width: "800px";
+//   margin: "20px auto";
+//   padding: "20px";
+//   font-family: "Arial, sans-serif";
+
+//   .top-bar {
+//     display: "flex";
+//     align-items: center;
+//     justify-content: "space-between";
+//     margin-bottom: "20px";
+//     // background-color: red;
+//   }
+
+//   .passageBox {
+//     background: "#f2f2f2";
+//     padding: "15px";
+//     margin-bottom: "15px";
+//     border-radius: "6px";
+//   }
+
+//   .instructionBox {
+//     background: "#e6f3ff";
+//     padding: "10px";
+//     margin-bottom: "15px";
+//     border-radius: "6px";
+//   }
+
+//   .questionBox {
+//     margin-bottom: "20px";
+//   }
+
+//   .action {
+//     display: "flex";
+//     justify-content: "space-between";
+//   }
+// }
+
+.start-container {
+  width: 100%;
+  max-width: 40rem;
+  margin: "20px auto";
+  //   padding: "20px";
+  font-family: "Arial, sans-serif";
+  padding: 1rem;
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .passageBox {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .instructionBox {
+    padding: 0.5rem 0rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .questionBox {
+    margin-bottom: 1rem;
+    h4 {
+      margin-bottom: 0.5rem;
+    }
+    .options-div{
+        margin-bottom: 0.5rem;
+    }
+  }
+  
+  .action{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}

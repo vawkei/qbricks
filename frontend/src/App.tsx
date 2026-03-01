@@ -41,23 +41,30 @@ function App() {
             </ProtectedRoute>
           ),
         },
-        {path:"/dashboard/phase-one/:id",element:(
-          <ProtectedRoute>
-            <TestListPage />
-          </ProtectedRoute>
-        )},
         {
-          path:"/dashboard/phase-one/:id/:testId",element:(
+          path: "/dashboard/phase-one/:id",
+          element: (
+            <ProtectedRoute>
+              <TestListPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/dashboard/phase-one/:id/:testId",
+          element: (
             <ProtectedRoute>
               <PreTestScreenPage />
             </ProtectedRoute>
-          )
+          ),
         },
-        {path:"/dashboard/phase-one/:id/:testId/start",element:(
-          <ProtectedRoute>
-            <StartPage />
-          </ProtectedRoute>
-        )}
+        {
+          path: "/dashboard/phase-one/:id/:testId/start",
+          element: (
+            <ProtectedRoute>
+              <StartPage />
+            </ProtectedRoute>
+          ),
+        },
       ],
     },
 
@@ -81,7 +88,6 @@ function App() {
 
 export default App;
 
-
 // /dashboard/phase-one/:subject
 //     → Subject Test List (10 tests, demo + paid)
 
@@ -90,3 +96,30 @@ export default App;
 
 // /dashboard/phase-one/:subject/:testId/start
 //     → Actual Test Screen
+
+//Build a Fake Question Engine
+//Just create something like:
+
+// 🏗️ What The Written Mode Page Must Handle
+
+// Before worrying about real content, your engine must support:
+
+// Display question
+
+// Display 4 options
+
+// Select one option
+
+// Next button
+
+// Previous button (optional)
+
+// Question counter (1 / 60)
+
+// Submit test
+
+// Calculate score
+
+// Navigate to result page
+
+// That’s the real work.

@@ -2,8 +2,17 @@ import classes from "./PreTestScreen.module.scss";
 import Card from "../../../../ui/card/Card";
 import { RiMic2Fill } from "react-icons/ri";
 import { FaPen } from "react-icons/fa";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PreTestScreen = () => {
+  const navigate = useNavigate();
+  const { id, testId } = useParams();
+  console.log("id:", id, "testId:", testId);
+
+  //  const handleWrittenMode = () => {
+  //   navigate(`/dashboard/phase-one/${id}/${testId}/start?mode=written`);
+  // };
+
   return (
     <div className={classes["pre-test-screen-container"]}>
       <h2>Pre-Test Screen</h2>
@@ -15,7 +24,12 @@ const PreTestScreen = () => {
           <Card className={classes["mode"]}>
             <RiMic2Fill /> Voice Mode
           </Card>
-          <Card className={classes["mode"]}>
+          <Card
+            className={classes["mode"]}
+            onClick={() =>
+              navigate(`/dashboard/phase-one/${id}/${testId}/start?mode=written`)
+            }
+          >
             <FaPen /> Written Mode
           </Card>
         </div>

@@ -51,3 +51,29 @@ export interface TestProps {
 //   title: string;
 //   isLocked: boolean;
 // };
+
+
+export interface QuestionProp  {
+  id: number;
+  section: string;
+  instructionId: string | null;
+  passageId: string | null;
+  question: string;
+  options: string[];
+  answer: string;
+};
+
+export interface SectionStats  {
+  [sectionName: string]: {
+    total: number;
+    correct: number;
+  };
+};
+
+export interface ResultDetails {
+    questionId: number;
+    section: string;
+    selectedAnswer: string | null;
+    correctAnswer: string;
+    isCorrect: boolean;
+  };

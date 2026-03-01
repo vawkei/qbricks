@@ -27,6 +27,11 @@
             .mode{
                 padding: 0.5rem;
                 width: 10rem;
+                cursor: pointer;
+
+                a{
+                    text-decoration: none;
+                }
             }
         }
     }

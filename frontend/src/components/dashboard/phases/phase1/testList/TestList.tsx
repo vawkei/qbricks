@@ -39,7 +39,7 @@ const TestList = () => {
                         className={classes.btn}
                         onClick={() =>
                           navigate(
-                            `/dashboard/phase-one/${test.subject?.toLocaleLowerCase()}/${test.id}`,
+                            `/dashboard/phase-one/${test.subject?.toLocaleLowerCase().replace(" ","-")}/${test.id}`,
                           )
                         }
                       >
