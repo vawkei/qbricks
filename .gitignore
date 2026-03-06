@@ -26,3 +26,4 @@ dist-ssr
 *.sln
 *.sw?
 .journal.md
+.synopsis.md

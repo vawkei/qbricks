@@ -13,6 +13,8 @@ import PhaseOnePage from "./pages/PhaseOnePage";
 import TestListPage from "./pages/TestListPage";
 import PreTestScreenPage from "./pages/PreTestScreenPage";
 import StartPage from "./pages/StartPage";
+import ResultPage from "./pages/ResultPage";
+import ReviewPage from "./pages/ReviewPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -65,6 +67,22 @@ function App() {
             </ProtectedRoute>
           ),
         },
+        {
+          path:"/dashboard/phase-one/:subjectId/:testId/result",
+          element:(
+            <ProtectedRoute>
+              <ResultPage />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path:"/dashboard/phase-one/:subjectId/:testId/review",
+          element:(
+            <ProtectedRoute>
+              <ReviewPage />
+            </ProtectedRoute>
+          )
+        }
       ],
     },
 

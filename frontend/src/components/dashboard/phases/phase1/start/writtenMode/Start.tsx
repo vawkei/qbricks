@@ -8,14 +8,23 @@ import {
 import Button from "../../../../../ui/button/Button";
 import { formatTime } from "../../../../../../utils/Utils";
 import type {
+  FinalReport,
   ResultDetails,
   SectionStats,
 } from "../../../../../../interface/interface";
+import { useNavigate, useParams } from "react-router-dom";
+import { usePostResult } from "../../../../../../features/results/usePostResult";
 
 const Start = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(600); //600 seconds is 10minutes
   const [answers, setAnswers] = useState<any>({});
+
+  const { mutateAsync: postResult } = usePostResult();
+
+  const navigate = useNavigate();
+
+  const { id, testId } = useParams();
 
   const currentQuestion = DummyQuestions[currentIndex];
 
@@ -96,6 +105,8 @@ const Start = () => {
       //  Save detailed result
       resultDetails.push({
         questionId: question.id,
+        question:question.question,
+        options:question.options,
         section: question.section,
         selectedAnswer:
           selectedAnswer !== undefined
@@ -121,7 +132,7 @@ const Start = () => {
       }
     }
 
-    const finalReport = {
+    const finalReport: FinalReport = {
       totalQuestions: DummyQuestions.length,
       totalCorrect,
       totalWrong,
@@ -135,6 +146,16 @@ const Start = () => {
     };
 
     console.log("Final Report:", finalReport);
+
+    if (finalReport) {
+      postResult(finalReport, {
+        onSuccess: (data) => {
+          if (data) {
+            navigate(`/dashboard/phase-one/${id}/${testId}/result`);
+          }
+        },
+      });
+    }
   };
 
   useEffect(() => {

@@ -72,8 +72,22 @@ export interface SectionStats  {
 
 export interface ResultDetails {
     questionId: number;
+    question:string;
+    options:string[];
     section: string;
     selectedAnswer: string | null;
     correctAnswer: string;
     isCorrect: boolean;
   };
+
+export interface FinalReport {
+    totalQuestions: number;
+    totalCorrect: number;
+    totalWrong: number;
+    totalUnanswered: number;
+    scorePercentage: number;
+    sectionBreakdown: SectionStats;
+    strengths: string[];
+    weaknesses: string[];
+    results: ResultDetails[];
+}

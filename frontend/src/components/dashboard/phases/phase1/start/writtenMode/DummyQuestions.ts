@@ -17,7 +17,7 @@ export const DummyInstructions = [
   },
   {
     id: "ins_oral_english",
-    section: "Oral English",
+    section: "OralEnglish",
     text: "From the options, choose the word that has the same vowel sound as the one represented by the letters underlined.",
   },
 ];
@@ -181,7 +181,7 @@ export const DummyQuestions: QuestionProp[] = [
 
   {
     id: 7,
-    section: "Oral English",
+    section: "OralEnglish",
     instructionId: "ins_oral_english",
     passageId: null,
     question:
@@ -191,7 +191,7 @@ export const DummyQuestions: QuestionProp[] = [
   },
   {
     id: 8,
-    section: "Oral English",
+    section: "OralEnglish",
     instructionId: "ins_oral_english",
     passageId: null,
     question:

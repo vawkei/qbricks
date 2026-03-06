@@ -1,0 +1,71 @@
+.result-container {
+  width: 100%;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  //  align-items: center;
+  //   justify-content: center;
+  padding: 1rem;
+  margin: 0rem auto;
+
+  h2 {
+    text-align: center;
+  }
+
+  .cardClass {
+    padding: 1rem;
+    .top {
+      text-align: center;
+    }
+    .body {
+      padding: 1rem;
+
+      .strengthBox {
+        padding: 1rem;
+        h4 {
+          margin-bottom: 0.5rem;
+        }
+        .strength {
+          display: flex;
+          gap: 0.5rem;
+        }
+      }
+      .weaknessBox {
+        padding: 1rem;
+        h4 {
+          margin-bottom: 0.5rem;
+        }
+        .weakness {
+          display: flex;
+          gap: 0.5rem;
+        }
+      }
+      .section-breakdown {
+        padding: 1rem;
+        h4 {
+          margin-bottom: 0.5rem;
+        }
+        p {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+    .action {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      .btn1 {
+        cursor: pointer;
+      }
+      .btn2 {
+        cursor: pointer;
+      }
+
+      .btn3 {
+        background-color: orange;
+        cursor: pointer;
+      }
+    }
+  }
+}
